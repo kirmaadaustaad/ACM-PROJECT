@@ -6,3 +6,5 @@ But..what if we use this for something other than text?
 How about images? Images on your terminal!
 
 Goal
+Convert images(jpg/png) to ASCII encoded strings, that look like the image.
+
