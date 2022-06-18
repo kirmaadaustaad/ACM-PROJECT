@@ -7,7 +7,9 @@ Character = {
     "standard": "@%#*+=-:. ",
     "complex": "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. "
 }
-
+# ho jaaoooo
+# plzz
+# run hi nhi ho raha
 
 def get_data(mode):
     font = ImageFont.truetype("fonts/DejaVuSansMono-Bold.ttf", size=20)
@@ -23,7 +25,7 @@ if bg == "white":
     bg_code = 255
 elif bg == "black":
     bg_code = 0
-
+# background dono lagaa ke dekh liya nhi aa rhi achi poho
 # Getting the character List, Font and Scaling characters for square Pixels
 char_list, font, scale = get_data("complex")
 num_chars = len(char_list)
