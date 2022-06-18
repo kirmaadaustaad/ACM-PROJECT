@@ -1,12 +1,40 @@
-def img2sketch(photo, k_size):
-    img=cv2.imread(photo)
-    grey_img=cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    invert_img=cv2.bitwise_not(grey_img)
-    blur_img=cv2.GaussianBlur(invert_img, (k_size,k_size),0)
-    invblur_img=cv2.bitwise_not(blur_img)  
-    sketch_img=cv2.divide(grey_img,invblur_img, scale=256.0)
-        cv2.imwrite('sketch.png', sketch_img)
-    cv2.imshow('sketch image',sketch_img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-img2sketch(photo='image.png', k_size=7)
+import cv2
+import matplotlib.pyplot as plt
+plt.style.use('seaborn')
+
+img = cv2.imread("input1.png")
+img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+plt.figure(figsize=(8,8))
+plt.imshow(img)
+plt.axis("off")
+plt.title("Original Image")
+plt.show()
+
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+plt.figure(figsize=(8,8))
+plt.imshow(img_gray,cmap="gray")
+plt.axis("off")
+plt.title("GrayScale Image")
+plt.show()
+
+
+img_invert = cv2.bitwise_not(img_gray)
+plt.figure(figsize=(8,8))
+plt.imshow(img_invert,cmap="gray")
+plt.axis("off")
+plt.title("Inverted Image")
+plt.show()
+
+img_smoothing = cv2.GaussianBlur(img_invert, (21, 21),sigmaX=0, sigmaY=0)
+plt.figure(figsize=(8,8))
+plt.imshow(img_smoothing,cmap="gray")
+plt.axis("off")
+plt.title("Smoothen Image")
+plt.show()
+
+final = cv2.divide(img_gray, 255 - img_smoothing, scale=255)
+plt.figure(figsize=(8,8))
+plt.imshow(final,cmap="gray")
+plt.axis("off")
+plt.title("Final Sketch Image")
+plt.show()
